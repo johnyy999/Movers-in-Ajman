@@ -1,0 +1,15 @@
+image: busybox
+
+pages:
+  stage: deploy
+  script:
+    - echo "No installation steps required for static site"
+    - echo "No build steps required for static site"
+    - mkdir .public
+    - cp -r public/* .public/
+    - mv .public public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
